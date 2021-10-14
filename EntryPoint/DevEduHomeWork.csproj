@@ -9,6 +9,7 @@
     <ProjectReference Include="..\Helpers\HelpersList.csproj" />
     <ProjectReference Include="..\Homework_1\Homework_1.csproj" />
     <ProjectReference Include="..\Homework_2\Homework_2.csproj" />
+    <ProjectReference Include="..\Homework_3\Homework_3.csproj" />
   </ItemGroup>
 
 </Project>
