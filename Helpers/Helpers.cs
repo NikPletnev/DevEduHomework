@@ -24,5 +24,25 @@ namespace HelpersList
             string str = Console.ReadLine();
             return str;
         }
+
+        public void RandomizeArray(int[] array)
+        {
+            Random rnd = new Random();
+            for (int index = 0; index < array.Length; index++)
+            {
+                array[index] = rnd.Next(100);
+            }
+        }
+
+
+
+        public void ShowArray(int[] array)
+        {
+            for (int index = 0; index < array.Length; index++)
+            {
+                Console.Write(array[index] + "\t");
+            }
+            Console.WriteLine("");
+        }
     }
 }
