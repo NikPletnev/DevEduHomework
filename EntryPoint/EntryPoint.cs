@@ -3,7 +3,7 @@ using Homework_1;
 using Homework_2;
 using Homework_3;
 using Homework_4;
-
+using Homework_5;
 
 namespace EntryPoint
 {
@@ -11,8 +11,8 @@ namespace EntryPoint
     {
         static void Main(string[] args)
         {
-            HW_4 hw_4 = new HW_4();
-            hw_4.SolveTask_4_10();
+            HW_5 hw_5 = new HW_5();
+            hw_5.SolveTask_5_6();
         }
     }
 }
