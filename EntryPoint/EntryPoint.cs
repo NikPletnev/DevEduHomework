@@ -11,8 +11,8 @@ namespace EntryPoint
     {
         static void Main(string[] args)
         {
-            HW_5 hw_5 = new HW_5();
-            hw_5.SolveTask_5_6();
+            HW_1 hw_1 = new HW_1();
+            hw_1.SolveTask_1_5();
         }
     }
 }

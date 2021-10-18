@@ -65,12 +65,31 @@ namespace Homework_1
             double Y1 = helpers.GetDoubleNumberFromUser("Y1: ");
             double X2 = helpers.GetDoubleNumberFromUser("X2: ");
             double Y2 = helpers.GetDoubleNumberFromUser("Y2: ");
-            Console.WriteLine(SolveCanonlinearEquation(X1, Y1, X2, Y2));
+            if (X1 == X2)
+            {
+                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {X1}");
+            }else if (Y1 == Y2)
+            {
+                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {Y1}");
+            }
+            else
+            {
+                double[] resultArray = new double[2];
+                resultArray = SolveCanonlinearEquation(X1, Y1, X2, Y2);
+                Console.WriteLine($"Уравнение прямой проходящей через эти точки: Y = {resultArray[0]}X + {resultArray[1]}");
+            }
+
+           
+            
         }
 
 
         public double CalculateResult(double numberA, double numberB)
         {
+            if (numberA == numberB)
+            {
+                throw new ArgumentException("Значения A и B должны быть разными");
+            }
             double calculationResult = (5 * numberA + Math.Pow(numberB, 2)) / (numberA - numberB);
             return calculationResult;
         }
@@ -94,16 +113,22 @@ namespace Homework_1
         }
         public double SolvelinearEquation(double A, double B, double C)
         {
+            if (A == 0)
+            {
+                throw new ArgumentException("Происходит деление на нуль");
+            }
             double X = (C - B) / A;
             return X;
         }
 
-        public string SolveCanonlinearEquation(double X1, double Y1, double X2, double Y2)
+        public double[] SolveCanonlinearEquation(double X1, double Y1, double X2, double Y2)
         {
             double k = (Y2 - Y1) / (X2 - X1);
             double b = k * X1 - Y1;
-            string result = $"Уравнение прямой проходящей через эти точки: Y = {k}X + {b}";
-            return result;
+            double[] resultArray = new double[2];
+            resultArray[0] = k;
+            resultArray[1] = b;
+            return resultArray;
         }
 
     }
