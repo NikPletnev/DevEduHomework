@@ -78,13 +78,13 @@ namespace Homework_1.Tests
         [TestCase(8, 4, 0)]
         [TestCase(10, 4, 2)]
         [TestCase(5, 3, 2)]
-        public void RemainderTest(int number_1, int number_2, int expected)
+        public void FindRemainderTest(int number_1, int number_2, int expected)
         {
             //arrange
 
             //act
 
-            double actual = _hw1.Remainder(number_1, number_2);
+            double actual = _hw1.FindRemainder(number_1, number_2);
 
             //assert
 
@@ -95,40 +95,40 @@ namespace Homework_1.Tests
         [TestCase(1, 2, 3, 1)]
 
 
-        public void SolvelinearEquationTest(double A, double B, double C, double expected)
+        public void SolveLinearEquationTest(double a, double b, double c, double expected)
         {
             //arrange
 
             //act
 
-            double actual = _hw1.SolvelinearEquation(A, B, C);
+            double actual = _hw1.SolveLinearEquation(a, b, c);
 
             //assert
 
             Assert.AreEqual(expected, actual);
         }
         [TestCase(0, 0, 0, "Происходит деление на нуль")]
-        public void SolvelinearEquationNegativeTest(double A, double B, double C, string expectedMessage)
+        public void SolvelinearEquationNegativeTest(double a, double b, double c, string expectedMessage)
         {
             //arrange
 
 
             //act, assert
 
-            Exception ex = Assert.Throws(typeof(ArgumentException), () => _hw1.SolvelinearEquation(A, B, C));
+            Exception ex = Assert.Throws(typeof(ArgumentException), () => _hw1.SolveLinearEquation(a, b, c));
             Assert.AreEqual(expectedMessage, ex.Message);
 
         }
 
         [TestCase(2, 5, 3, 6, 1, -3)]
-        public void SolveCanonlinearEquationTest(double X1, double Y1, double X2, double Y2, double expectedK, double expectedB)
+        public void ReductionToLinearEquationTest(double x1, double y1, double x2, double y2, double expectedK, double expectedB)
         {
 
             //arrange
 
             //act
 
-            double[] actual = _hw1.SolveCanonlinearEquation(X1, Y1, X2, Y2);
+            double[] actual = _hw1.ReductionToLinearEquation(x1, y1, x2, y2);
 
             //assert
 

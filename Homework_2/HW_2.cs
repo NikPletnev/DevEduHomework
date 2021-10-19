@@ -11,16 +11,16 @@ namespace Homework_2
             Helpers helpers = new Helpers();
             double number_1 = helpers.GetDoubleNumberFromUser("Введите первое число: ");
             double number_2 = helpers.GetDoubleNumberFromUser("Введите второе число: ");
-            Console.WriteLine(OperationsDependingOnComparison(number_1, number_2));
+            Console.WriteLine(SolveOperationsDependingOnComparison(number_1, number_2));
 
         }
 
         public void SolveTask_2_2()
         {
             Helpers helpers = new Helpers();
-            double X = helpers.GetDoubleNumberFromUser("Введите X: ");
-            double Y = helpers.GetDoubleNumberFromUser("Введите Y: ");
-            Console.WriteLine(CoordinateSearch(X,Y));
+            double x = helpers.GetDoubleNumberFromUser("Введите X: ");
+            double y = helpers.GetDoubleNumberFromUser("Введите Y: ");
+            WriteCoordinateQuarter(FindTheCoordinateQuarter(x,y), x, y);
 
         }
 
@@ -28,20 +28,33 @@ namespace Homework_2
         {
             Helpers helpers = new Helpers();
             Console.WriteLine("Введите три числа: ");
-            double A = helpers.GetDoubleNumberFromUser("A: ");
-            double B = helpers.GetDoubleNumberFromUser("B: ");
-            double C = helpers.GetDoubleNumberFromUser("C: ");
-            Console.WriteLine(SortThreeIntNumbers(A, B, C));
+            double a = helpers.GetDoubleNumberFromUser("A: ");
+            double b = helpers.GetDoubleNumberFromUser("B: ");
+            double c = helpers.GetDoubleNumberFromUser("C: ");
+            SortThreeIntNumbers(ref a, ref b, ref c);
+            Console.WriteLine($"Числа в порядке возрастания: {a},{b},{c}");
         }
 
         public void SolveTask_2_4()
         {
             Helpers helpers = new Helpers();
             Console.WriteLine("Здравствуйте! Введите три числа задающие уровнение стандартного вида AX2+BX+C=0.");
-            double A = helpers.GetDoubleNumberFromUser("A: ");
-            double B = helpers.GetDoubleNumberFromUser("B: ");
-            double C = helpers.GetDoubleNumberFromUser("C: ");
-            Console.WriteLine(SolveQuadraticEquation(A, B, C));
+            double a = helpers.GetDoubleNumberFromUser("A: ");
+            double b = helpers.GetDoubleNumberFromUser("B: ");
+            double c = helpers.GetDoubleNumberFromUser("C: ");
+            double[] resultArray = SolveQuadraticEquation(a, b, c);
+            switch (resultArray[0])
+            {
+                case 2:
+                    Console.WriteLine($"У такого квадратного уравнения будет два корня x1 = {resultArray[1]} и x2 = {resultArray[2]}"); 
+                    break;
+                case 1:
+                    Console.WriteLine($"У такого квадратного уравнения будет один корeнь x1 = {resultArray[1]}");
+                    break;
+                default:
+                    Console.WriteLine($"У такого квадратного уравнения нет корней");
+                    break;
+            }
 
 
         }
@@ -126,140 +139,167 @@ namespace Homework_2
 
         }
 
-        public string CoordinateSearch(double X, double Y)
+        public double FindTheCoordinateQuarter(double x, double y)
         {
 
-            string resultString = "";
-            if (X == 0 || Y == 0)
+            double coordinateQuarter = 0;
+            if (x == 0 || y == 0)
             {
-                if (X == 0 && Y == 0)
+                if (x == 0 && y == 0)
                 {
-                    resultString = "Точка находится в центре координатой оси";
+                    coordinateQuarter = 0;
                 }
                 else
                 {
-                    resultString = "Точка находится на координатой оси";
+                    coordinateQuarter = 0;
                 }
             }
-            else if (X > 0)
+            else if (x > 0)
             {
-                if (Y > 0)
+                if (y > 0)
                 {
-                    resultString = $"Точка с координатами {X},{Y} пренаделжит первой четверти";
+                    coordinateQuarter = 1;
                 }
                 else
                 {
-                    resultString = $"Точка с координатами {X},{Y} пренаделжит четвертой четверти";
+                    coordinateQuarter = 4;
                 }
             }
             else
             {
-                if (Y > 0)
+                if (y > 0)
                 {
-                    resultString = $"Точка с координатами {X},{Y} пренаделжит второй четверти";
+                    coordinateQuarter = 2;
                 }
-                else if (X != 0 && Y != 0)
+                else if (x != 0 && y != 0)
                 {
-                    resultString = $"Точка с координатами {X},{Y} пренаделжит третьей четверти";
+                    coordinateQuarter = 3; 
                 }
             }
-            return resultString;
+            return coordinateQuarter;
         }
 
-        public string SortThreeIntNumbers(double A, double B, double C)
+        public void WriteCoordinateQuarter(double quarterNumber, double x, double y)
         {
-            double min = A, max = B, medium = C;
-            if (A > B)
+            switch (quarterNumber)
             {
-                if (A > C)
+                case 1:
+                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит первой четверти");
+                    break;
+                case 2:
+                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит второй четверти");
+                    break;
+                case 3:
+                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит третьей четверти");
+                    break;
+                case 4:
+                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит четвертой четверти");
+                    break;
+
+                default:
+                    Console.WriteLine("Точка находится в центре координатой оси или на координатной оси");
+                    break;
+            }
+        }
+
+
+        public void SortThreeIntNumbers(ref double a, ref double b, ref double c)
+        {
+            double min = a, max = b, medium = c;
+            if (a > b)
+            {
+                if (a > c)
                 {
-                    max = A;
-                    if (C > B)
+                    max = a;
+                    if (c > b)
                     {
-                        medium = C;
-                        min = B;
+                        medium = c;
+                        min = b;
                     }
                     else
                     {
-                        medium = B;
-                        min = C;
+                        medium = b;
+                        min = c;
                     }
                 }
                 else
                 {
-                    max = C;
-                    medium = A;
-                    min = B;
+                    max = c;
+                    medium = a;
+                    min = b;
                 }
             }
             else
             {
-                if (B > C)
+                if (b > c)
                 {
-                    max = B;
-                    if (A > C)
+                    max = b;
+                    if (a > c)
                     {
-                        medium = A;
-                        min = C;
+                        medium = a;
+                        min = c;
                     }
                     else
                     {
-                        min = A;
+                        min = a;
                     }
                 }
                 else
                 {
-                    min = A;
-                    medium = B;
-                    max = C;
+                    min = a;
+                    medium = b;
+                    max = c;
                 }
             }
-            string resultString = $"Числа в порядке возрастания: {min},{medium},{max}";
-            return resultString;
+            a = min;
+            b = medium;
+            c = max;
         }
 
-        public string SolveQuadraticEquation(double A, double B, double C)
+        public double[] SolveQuadraticEquation(double A, double B, double C)
         {
             double discriminant = Math.Pow(B, 2) - 4 * A * C;
-            string resultString;
+            double[]  resultArray = new double[3];
+
             if (discriminant >= 0)
             {
                 double x1 = (-B + Math.Sqrt(discriminant)) / (2 * A);
                 if (discriminant > 0)
                 {
                     double x2 = (-B - Math.Sqrt(discriminant)) / (2 * A);
-                    resultString = $"У такого квадратного уравнения будет два корня x1 = {x1} и x2 = {x2}";
-
+                    resultArray[0] = 2;
+                    resultArray[1] = x1;
+                    resultArray[2] = x2;
                 }
                 else
                 {
-                    resultString = $"У такого квадратного уравнения будет один корeнь x1 = {x1}";
+                    resultArray[0] = 1;
+                    resultArray[1] = x1;
                 }
-
             }
             else
             {
-                resultString = $"У такого квадратного уравнения нет корней";
+                resultArray[0] = 0;
             }
-            return resultString;
+            return resultArray;
         }
 
-        public string OperationsDependingOnComparison(double number_1, double number_2)
+        public double SolveOperationsDependingOnComparison(double number_1, double number_2)
         {
-            string resultString;
+            double result;
             if (number_1 > number_2)
             {
-                resultString = $"A+B = {number_1 + number_2}";
+                result = number_1 + number_2;
             }
             else if (number_1 < number_2)
             {
-                resultString = $"A-B = {number_1 - number_2}";
+                result = number_1 - number_2;
             }
             else
             {
-                resultString = $"A*B = {number_1 * number_2}";
+                result = number_1 * number_2;
             }
-            return resultString;
+            return result;
         }
 
 

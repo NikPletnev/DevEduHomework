@@ -1,10 +1,12 @@
 ﻿using System;
 using HelpersList;
+using Homework_1;
 
 namespace Homework_5
 {
     public class HW_5
     {
+        HW_1 hw_1 = new HW_1();
         public void SolveTask_5_1()
         {
             Helpers helpers = new Helpers();
@@ -25,7 +27,7 @@ namespace Homework_5
             int[,] array = new int[arrayLenghtRows, arrayLenghtColumns];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            int max = SerachMinInArray(array);
+            int max = SerachMaxInArray(array);
             Console.WriteLine($"Максимальное значение: {max}");
         }
 
@@ -38,8 +40,8 @@ namespace Homework_5
             int[,] array = new int[arrayLenghtRows, arrayLenghtColumns];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            string minIndex = GetIndexMinElement(array);
-            Console.WriteLine($"Индекс минимального значения: {minIndex}");
+            int[] minIndex = GetIndexMinElement(array);
+            Console.WriteLine($"Индекс минимального значения: ({minIndex[0]} , {minIndex[1]})");
         }
 
         public void SolveTask_5_4()
@@ -50,8 +52,8 @@ namespace Homework_5
             int[,] array = new int[arrayLenghtRows, arrayLenghtColumns];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            string maxIndex = GetIndexMaxElement(array);
-            Console.WriteLine($"Индекс максимального значения: {maxIndex}");
+            int[] maxIndex = GetIndexMaxElement(array);
+            Console.WriteLine($"Индекс максимального значения: ({maxIndex[0]} , {maxIndex[1]})");
         }
 
 
@@ -89,9 +91,7 @@ namespace Homework_5
             {
                 for (int j = 0; j < i; j++)
                 {
-                    buffer = array[i, j];
-                    array[i, j] = array[j, i];
-                    array[j, i] = buffer;
+                    hw_1.Swap(ref array[i, j], ref array[j, i]);
                 }
             }
         }
@@ -111,17 +111,17 @@ namespace Homework_5
                         (j == 0 || array[i, j] > array[i, j - 1]))
                     {
                         count++;
-                        Console.WriteLine($"Элемент массива под индексом ({i} , {j}) со значением {array[i,j]} является наибольшим среди своих соседей.");
+                        //Console.WriteLine($"Элемент массива под индексом ({i} , {j}) со значением {array[i,j]} является наибольшим среди своих соседей.");
                     }
                 }
             }
             return count;
         }
 
-        public string GetIndexMinElement(int[,] array)
+        public int[] GetIndexMinElement(int[,] array)
         {
             int min = 0;
-            string minIndex = "[0 , 0]";
+            int[] minIndex = new int[2];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -129,14 +129,16 @@ namespace Homework_5
                     if (i == 0 && j == 0)
                     {
                         min = array[i, j];
-                        minIndex = "[0 , 0]";
+                        minIndex[0] = 0;
+                        minIndex[1] = 0;
                     }
                     else
                     {
                         if (min > array[i, j])
                         {
                             min = array[i, j];
-                            minIndex = $"[{i} , {j}]";
+                            minIndex[0] = i;
+                            minIndex[1] = j;
                         }
                     }
                 }
@@ -144,10 +146,10 @@ namespace Homework_5
             return minIndex;
         }
 
-        public string GetIndexMaxElement(int[,] array)
+        public int[] GetIndexMaxElement(int[,] array)
         {
             int max = 0;
-            string maxIndex = "[0 , 0]";
+            int[] maxIndex = new int[2];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -155,14 +157,16 @@ namespace Homework_5
                     if (i == 0 && j == 0)
                     {
                         max = array[i, j];
-                        maxIndex = "[0 , 0]";
+                        maxIndex[0] = 0;
+                        maxIndex[1] = 0; 
                     }
                     else
                     {
                         if (max < array[i, j])
                         {
                             max = array[i, j];
-                            maxIndex = $"[{i} , {j}]";
+                            maxIndex[0] = i;
+                            maxIndex[1] = j; 
                         }
                     }
                 }

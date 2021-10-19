@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Helpers\HelpersList.csproj" />
+    <ProjectReference Include="..\Homework_1\Homework_1.csproj" />
   </ItemGroup>
 
 </Project>

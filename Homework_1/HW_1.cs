@@ -28,10 +28,10 @@ namespace Homework_1
         public void SolveTask_1_3()
         {
            Helpers helpers = new Helpers();
-           int A = helpers.GetIntNumberFromUser("Введите число A:");
-           int B = helpers.GetIntNumberFromUser("Введите число B:");
-           Console.WriteLine($"Результат деления {A} на {B} будет равен {Divide(A, B)}");
-           Console.WriteLine($"Остаток от деления {A} на {B} будет равен {Remainder(A, B)}");
+           int number_a = helpers.GetIntNumberFromUser("Введите число A:");
+           int number_b = helpers.GetIntNumberFromUser("Введите число B:");
+           Console.WriteLine($"Результат деления {number_a} на {number_b} будет равен {Divide(number_a, number_b)}");
+           Console.WriteLine($"Остаток от деления {number_a} на {number_b} будет равен {FindRemainder(number_a, number_b)}");
 
         }
         public void SolveTask_1_4()
@@ -40,10 +40,10 @@ namespace Homework_1
             bool flag = false;
             do
             {
-                double A = helpers.GetDoubleNumberFromUser("Введите число A");
-                double B = helpers.GetDoubleNumberFromUser("Введите число B");
-                double C = helpers.GetDoubleNumberFromUser("Введите число C");
-                if (A == 0 || B == 0 || C == 0)
+                double number_a = helpers.GetDoubleNumberFromUser("Введите число A");
+                double number_b = helpers.GetDoubleNumberFromUser("Введите число B");
+                double number_c = helpers.GetDoubleNumberFromUser("Введите число C");
+                if (number_a == 0 || number_b == 0 || number_c == 0)
                 {
                     Console.WriteLine("Одно из чисел равно нулю");
                     flag = true;
@@ -51,7 +51,7 @@ namespace Homework_1
                 else
                 {
                     flag = false;
-                    Console.WriteLine($"Решение(значение X) линейного уравнения стандартного вида, где A * X + B = C: {SolvelinearEquation(A, B, C)}");
+                    Console.WriteLine($"Решение(значение X) линейного уравнения стандартного вида, где A * X + B = C: {SolveLinearEquation(number_a, number_b, number_c)}");
                 }
             } while (flag == true);
            
@@ -61,21 +61,21 @@ namespace Homework_1
         {
             Console.WriteLine("Введите 4 числа (X1, Y1, X2, Y2), описывающие координаты 2-х точек на координатной плоскости: ");
             Helpers helpers = new Helpers();
-            double X1 = helpers.GetDoubleNumberFromUser("X1: ");
-            double Y1 = helpers.GetDoubleNumberFromUser("Y1: ");
-            double X2 = helpers.GetDoubleNumberFromUser("X2: ");
-            double Y2 = helpers.GetDoubleNumberFromUser("Y2: ");
-            if (X1 == X2)
+            double x1 = helpers.GetDoubleNumberFromUser("X1: ");
+            double y1 = helpers.GetDoubleNumberFromUser("Y1: ");
+            double x2 = helpers.GetDoubleNumberFromUser("X2: ");
+            double y2 = helpers.GetDoubleNumberFromUser("Y2: ");
+            if (x1 == x2)
             {
-                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {X1}");
-            }else if (Y1 == Y2)
+                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {x1}");
+            }else if (y1 == y2)
             {
-                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {Y1}");
+                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {x1}");
             }
             else
             {
                 double[] resultArray = new double[2];
-                resultArray = SolveCanonlinearEquation(X1, Y1, X2, Y2);
+                resultArray = ReductionToLinearEquation(x1, y1, x2, y2);
                 Console.WriteLine($"Уравнение прямой проходящей через эти точки: Y = {resultArray[0]}X + {resultArray[1]}");
             }
 
@@ -101,30 +101,38 @@ namespace Homework_1
             str2 = buffer;
         }
 
+        public void Swap(ref int number_1, ref int number_2)
+        {
+            int buffer = number_1;
+            number_1 = number_2;
+            number_2 = buffer;
+        }
+
+
         public int Divide(int number_1, int number_2)
         {
             int result = number_1 / number_2;
             return result;
         }
-        public int Remainder(int number_1, int number_2)
+        public int FindRemainder(int number_1, int number_2)
         {
             int result = number_1 % number_2;
             return result;
         }
-        public double SolvelinearEquation(double A, double B, double C)
+        public double SolveLinearEquation(double number_a, double number_b, double number_c)
         {
-            if (A == 0)
+            if (number_a == 0)
             {
                 throw new ArgumentException("Происходит деление на нуль");
             }
-            double X = (C - B) / A;
-            return X;
+            double x = (number_c - number_b) / number_a;
+            return x;
         }
 
-        public double[] SolveCanonlinearEquation(double X1, double Y1, double X2, double Y2)
+        public double[] ReductionToLinearEquation(double x1, double y1, double x2, double y2)
         {
-            double k = (Y2 - Y1) / (X2 - X1);
-            double b = k * X1 - Y1;
+            double k = (y2 - y1) / (x2 - x1);
+            double b = k * x1 - y1;
             double[] resultArray = new double[2];
             resultArray[0] = k;
             resultArray[1] = b;

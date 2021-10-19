@@ -1,18 +1,20 @@
 ﻿using System;
 using HelpersList;
+using Homework_1;
 
 namespace Homework_4
 {
     public class HW_4
     {
-       public void SolveTask_4_1()
+        HW_1 hw_1 = new HW_1();
+        public void SolveTask_4_1()
         {
             Helpers helpers = new Helpers();
             int arrayLenght = helpers.GetIntNumberFromUser("Введите длинну массива: ");
             int[] array = new int[arrayLenght];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            int min = SearchMinInArray(array);
+            int min = GetMin(array);
             Console.WriteLine($"\nМинимальное число в массиве: {min}");
         }
 
@@ -23,7 +25,7 @@ namespace Homework_4
             int[] array = new int[arrayLenght];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            int max = SearchMaxInArray(array);
+            int max = GetMax(array);
             Console.WriteLine($"\nМаксимальноле число в массиве: {max}");
         }
 
@@ -35,7 +37,7 @@ namespace Homework_4
             int[] array = new int[arrayLenght];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            int minIndex = ReciveIndexMinElement(array);
+            int minIndex = GetIndexOfMin(array);
             Console.WriteLine($"Индекс минимального числа в массиве: {minIndex}");
         }
 
@@ -46,7 +48,7 @@ namespace Homework_4
             int[] array = new int[arrayLenght];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            int maxIndex = ReciveIndexMaxElement(array);
+            int maxIndex = GetIndexOfMax(array);
             Console.WriteLine($"Индекс максимального числа в массиве: {maxIndex}");
         }
 
@@ -69,7 +71,7 @@ namespace Homework_4
             int[] array = new int[arrayLenght];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            ReversArray(array);
+            ReverseAnArrayy(array);
             Console.WriteLine("\nРеверс массива: ");
             helpers.ShowArray(array);
 
@@ -131,9 +133,7 @@ namespace Homework_4
                 {
                     if (array[index] > array[index + 1])
                     {
-                        buffer = array[index];
-                        array[index] = array[index + 1];
-                        array[index + 1] = buffer;
+                        hw_1.Swap(ref array[index], ref array[index + 1]);
                         flag = true;
                     }
 
@@ -152,9 +152,7 @@ namespace Homework_4
                 {
                     if (array[index] > array[indexSup])
                     {
-                        buffer = array[index];
-                        array[index] = array[indexSup];
-                        array[indexSup] = buffer;
+                        hw_1.Swap(ref array[index], ref array[index + 1]);
                     }
                 }
             }
@@ -165,9 +163,8 @@ namespace Homework_4
             int buffer;
             for (int index = 0; index < array.Length / 2; index++)
             {
-                buffer = array[index];
-                array[index] = array[array.Length / 2 + index + array.Length % 2];
-                array[array.Length / 2 + index + array.Length % 2] = buffer;
+                
+                hw_1.Swap(ref array[index], ref array[array.Length / 2 + index + array.Length % 2]);
             }
         }
 
@@ -184,13 +181,11 @@ namespace Homework_4
             return oddCount;
         }
 
-        public void ReversArray(int[] array)
+        public void ReverseAnArrayy(int[] array)
         {
             for (int index = 0; index < array.Length / 2; index++)
             {
-                int buffer = array[index];
-                array[index] = array[array.Length - index - 1];
-                array[array.Length - index - 1] = buffer;
+                hw_1.Swap(ref array[index], ref array[array.Length - index - 1]);
             }
         }
 
@@ -206,7 +201,7 @@ namespace Homework_4
             return sumOdd;
         }
 
-        public int ReciveIndexMinElement(int [] array)
+        public int GetIndexOfMin(int [] array)
         {
             int minIndex = 0;
             int min = array[0];
@@ -221,7 +216,7 @@ namespace Homework_4
             return minIndex;
         }
 
-        public int ReciveIndexMaxElement(int[] array)
+        public int GetIndexOfMax(int[] array)
         {
             int maxIndex = 0;
             int max = array[0];
@@ -237,7 +232,7 @@ namespace Homework_4
         }
 
 
-        public int SearchMaxInArray(int[] array)
+        public int GetMax(int[] array)
         {
             int max = array[0];
             for (int index = 0; index < array.Length; index++)
@@ -250,7 +245,7 @@ namespace Homework_4
             return max;
         }
 
-        public int SearchMinInArray(int[] array)
+        public int GetMin(int[] array)
         {
             int min = array[0];
             for (int index = 0; index < array.Length; index++)
