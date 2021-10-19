@@ -123,7 +123,7 @@ namespace Homework_4
 
         public void BubbleSort(int[] array)
         {
-            int buffer;
+            
             int count = 0;
             bool flag = true;
             while (flag)
@@ -145,7 +145,7 @@ namespace Homework_4
 
         public void SelectSort(int[] array)
         {
-            int buffer;
+            
             for (int index = 0; index < array.Length - 1; index++)
             {
                 for (int indexSup = index + 1; indexSup < array.Length; indexSup++)
@@ -160,7 +160,7 @@ namespace Homework_4
 
         public void SwapArrayParts(int[] array)
         {
-            int buffer;
+            
             for (int index = 0; index < array.Length / 2; index++)
             {
                 

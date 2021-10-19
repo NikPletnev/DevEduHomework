@@ -76,14 +76,14 @@ namespace Homework_3
                     Console.WriteLine("Число отрицательное.");
                 }
             } while (number < 0);
-            Console.WriteLine($"Целое положительное число, которое является кубом целого числа {number} будет равным {Math.Round(FindCubeOfNumberUsingTheHalfDivisionMethod(number),2)}");
+            Console.WriteLine($"Целое положительное число, которое является кубом целого числа {number} будет равным {FindCubeOfNumberUsingTheHalfDivisionMethod(number)}");
         }
 
         public void SolveTask_3_9()
         {
             Helpers helpers = new Helpers();
             int number = helpers.GetIntNumberFromUser("Введите число: ");
-            Console.WriteLine($"Количество ченых числе в числе {number} состовляет {CountOddNumbers(number)}");
+            Console.WriteLine($"Количество нечетных числе в числе {number} состовляет {CountOddNumbers(number)}");
         }
 
         public void SolveTask_3_10()
@@ -254,7 +254,7 @@ namespace Homework_3
                     rangeMin = result;
                 }
             }
-            return result;
+            return Math.Round(result, 1);
         }
 
         public int CalculateGreatestCommonFactor(int numberA, int numberB)

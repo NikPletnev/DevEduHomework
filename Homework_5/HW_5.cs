@@ -86,7 +86,7 @@ namespace Homework_5
 
         public void FlipDiagonally(int[,] array)
         {
-            int buffer;
+            
             for (int i = 1; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < i; j++)

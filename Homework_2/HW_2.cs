@@ -256,17 +256,17 @@ namespace Homework_2
             c = max;
         }
 
-        public double[] SolveQuadraticEquation(double A, double B, double C)
+        public double[] SolveQuadraticEquation(double a, double b, double c)
         {
-            double discriminant = Math.Pow(B, 2) - 4 * A * C;
+            double discriminant = Math.Pow(b, 2) - 4 * a * c;
             double[]  resultArray = new double[3];
 
             if (discriminant >= 0)
             {
-                double x1 = (-B + Math.Sqrt(discriminant)) / (2 * A);
+                double x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
                 if (discriminant > 0)
                 {
-                    double x2 = (-B - Math.Sqrt(discriminant)) / (2 * A);
+                    double x2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
                     resultArray[0] = 2;
                     resultArray[1] = x1;
                     resultArray[2] = x2;
