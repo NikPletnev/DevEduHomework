@@ -43,18 +43,18 @@ namespace Homework_1.Tests
         [TestCase("Первая", "Вторая", "Вторая", "Первая")]
 
 
-        public void SwapTest(string number_1, string number_2, string expectedNumber_1, string expectedNumber_2)
+        public void SwapTest(string numberA, string numberB, string expectedNumberA, string expectedNumberB)
         {
             //arrange
 
             //act
 
-            _hw1.Swap(ref number_1, ref number_2);
+            _hw1.Swap(ref numberA, ref numberB);
 
             //assert
 
-            Assert.AreEqual(expectedNumber_1, number_1);
-            Assert.AreEqual(expectedNumber_2, number_2);
+            Assert.AreEqual(expectedNumberA, numberA);
+            Assert.AreEqual(expectedNumberB, numberB);
 
         }
 
@@ -63,13 +63,13 @@ namespace Homework_1.Tests
         [TestCase(10, 4, 2)]
         [TestCase(5, 3, 1)]
 
-        public void DividerTest(int number_1, int number_2, int expected)
+        public void DividerTest(int numberA, int numberB, int expected)
         {
             //arrange
 
             //act
 
-            double actual = _hw1.Divide(number_1, number_2);
+            double actual = _hw1.Divide(numberA, numberB);
 
             //assert
 
@@ -78,13 +78,13 @@ namespace Homework_1.Tests
         [TestCase(8, 4, 0)]
         [TestCase(10, 4, 2)]
         [TestCase(5, 3, 2)]
-        public void FindRemainderTest(int number_1, int number_2, int expected)
+        public void FindRemainderTest(int numberA, int numberB, int expected)
         {
             //arrange
 
             //act
 
-            double actual = _hw1.FindRemainder(number_1, number_2);
+            double actual = _hw1.FindRemainder(numberA, numberB);
 
             //assert
 
@@ -128,7 +128,7 @@ namespace Homework_1.Tests
 
             //act
 
-            double[] actual = _hw1.ReductionToLinearEquation(x1, y1, x2, y2);
+            double[] actual = _hw1.GetLinearEquation(x1, y1, x2, y2);
 
             //assert
 

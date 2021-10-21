@@ -9,9 +9,9 @@ namespace Homework_2
         public void SolveTask_2_1()
         {
             Helpers helpers = new Helpers();
-            double number_1 = helpers.GetDoubleNumberFromUser("Введите первое число: ");
-            double number_2 = helpers.GetDoubleNumberFromUser("Введите второе число: ");
-            Console.WriteLine(SolveOperationsDependingOnComparison(number_1, number_2));
+            double numberA = helpers.GetDoubleNumberFromUser("Введите первое число: ");
+            double numberB = helpers.GetDoubleNumberFromUser("Введите второе число: ");
+            Console.WriteLine(SolveOperationsDependingOnComparison(numberA, numberB));
 
         }
 
@@ -145,14 +145,7 @@ namespace Homework_2
             double coordinateQuarter = 0;
             if (x == 0 || y == 0)
             {
-                if (x == 0 && y == 0)
-                {
                     coordinateQuarter = 0;
-                }
-                else
-                {
-                    coordinateQuarter = 0;
-                }
             }
             else if (x > 0)
             {
@@ -284,20 +277,20 @@ namespace Homework_2
             return resultArray;
         }
 
-        public double SolveOperationsDependingOnComparison(double number_1, double number_2)
+        public double SolveOperationsDependingOnComparison(double numberA, double numberB)
         {
             double result;
-            if (number_1 > number_2)
+            if (numberA > numberB)
             {
-                result = number_1 + number_2;
+                result = numberA + numberB;
             }
-            else if (number_1 < number_2)
+            else if (numberA < numberB)
             {
-                result = number_1 - number_2;
+                result = numberA - numberB;
             }
             else
             {
-                result = number_1 * number_2;
+                result = numberA * numberB;
             }
             return result;
         }

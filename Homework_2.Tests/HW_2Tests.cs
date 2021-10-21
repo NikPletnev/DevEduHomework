@@ -71,7 +71,7 @@ namespace Homework_2.Tests
         [TestCase(1.0, 2.0, 3.0, 1.0, 2.0, 3.0)]
         [TestCase(3.0, 2.0, 1.0, 1.0, 2.0, 3.0)]
         [TestCase(4.0, -2.0, 1.0, -2.0, 1d, 4d)]
-        public void SortThreeIntNumbersTest(ref double a, ref double b, ref double c, double expected_a, double expected_b, double expected_c)
+        public void SortThreeIntNumbersTest(ref double a, ref double b, ref double c, double expectedA, double expectedB, double expectedC)
         {
             //arrange
 
@@ -81,9 +81,9 @@ namespace Homework_2.Tests
 
             //assert
 
-            Assert.AreEqual(expected_a, a);
-            Assert.AreEqual(expected_b, b);
-            Assert.AreEqual(expected_c, c);
+            Assert.AreEqual(expectedA, a);
+            Assert.AreEqual(expectedB, b);
+            Assert.AreEqual(expectedC, c);
 
         }
 
@@ -107,13 +107,13 @@ namespace Homework_2.Tests
         [TestCase(2, 2, 4)]
         [TestCase(1, 2, -1)]
 
-        public void SolveOperationsDependingOnComparisonTest(double number_1, double number_2, double expected)
+        public void SolveOperationsDependingOnComparisonTest(double numberA, double numberB, double expected)
         {
             //arrange
 
             //act
 
-            double actual = _hw2.SolveOperationsDependingOnComparison(number_1, number_2);
+            double actual = _hw2.SolveOperationsDependingOnComparison(numberA, numberB);
             //assert
             Assert.AreEqual(expected, actual);
         }

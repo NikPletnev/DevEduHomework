@@ -181,7 +181,7 @@ namespace Homework_4
             return oddCount;
         }
 
-        public void ReverseAnArrayy(int[] array)
+        public void GetReversedArrayy(int[] array)
         {
             for (int index = 0; index < array.Length / 2; index++)
             {

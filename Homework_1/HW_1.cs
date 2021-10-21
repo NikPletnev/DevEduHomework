@@ -9,29 +9,29 @@ namespace Homework_1
         public void SolveTask_1_1()
         {
             Helpers helpers = new Helpers();
-            double A = helpers.GetDoubleNumberFromUser("Введите число A:");
-            double B = helpers.GetDoubleNumberFromUser("Введите число B:");
-            Console.WriteLine($"Результат сложения:{CalculateResult(A,B)}" ); 
+            double a = helpers.GetDoubleNumberFromUser("Введите число A:");
+            double b = helpers.GetDoubleNumberFromUser("Введите число B:");
+            Console.WriteLine($"Результат сложения:{CalculateResult(a,b)}" ); 
 
         }
 
         public void SolveTask_1_2()
         {
             Helpers helpers = new Helpers();
-            string str_1 = helpers.GetStringFromUser("Введите первую строку:");
-            string str_2 = helpers.GetStringFromUser("Введите вторую строку:");
-            Swap(ref str_1, ref str_2);
-            Console.WriteLine($"Первая строка: {str_1}");
-            Console.WriteLine($"Вторая строка: {str_2}");
+            string str1 = helpers.GetStringFromUser("Введите первую строку:");
+            string str2 = helpers.GetStringFromUser("Введите вторую строку:");
+            Swap(ref str1, ref str2);
+            Console.WriteLine($"Первая строка: {str1}");
+            Console.WriteLine($"Вторая строка: {str2}");
         }
 
         public void SolveTask_1_3()
         {
            Helpers helpers = new Helpers();
-           int number_a = helpers.GetIntNumberFromUser("Введите число A:");
-           int number_b = helpers.GetIntNumberFromUser("Введите число B:");
-           Console.WriteLine($"Результат деления {number_a} на {number_b} будет равен {Divide(number_a, number_b)}");
-           Console.WriteLine($"Остаток от деления {number_a} на {number_b} будет равен {FindRemainder(number_a, number_b)}");
+           int numberA = helpers.GetIntNumberFromUser("Введите число A:");
+           int numberB = helpers.GetIntNumberFromUser("Введите число B:");
+           Console.WriteLine($"Результат деления {numberA} на {numberB} будет равен {Divide(numberA, numberB)}");
+           Console.WriteLine($"Остаток от деления {numberA} на {numberB} будет равен {FindRemainder(numberA, numberB)}");
 
         }
         public void SolveTask_1_4()
@@ -40,10 +40,10 @@ namespace Homework_1
             bool flag = false;
             do
             {
-                double number_a = helpers.GetDoubleNumberFromUser("Введите число A");
-                double number_b = helpers.GetDoubleNumberFromUser("Введите число B");
-                double number_c = helpers.GetDoubleNumberFromUser("Введите число C");
-                if (number_a == 0 || number_b == 0 || number_c == 0)
+                double numberA = helpers.GetDoubleNumberFromUser("Введите число A");
+                double numberB = helpers.GetDoubleNumberFromUser("Введите число B");
+                double numberC = helpers.GetDoubleNumberFromUser("Введите число C");
+                if (numberA == 0 || numberB == 0 || numberC == 0)
                 {
                     Console.WriteLine("Одно из чисел равно нулю");
                     flag = true;
@@ -51,7 +51,7 @@ namespace Homework_1
                 else
                 {
                     flag = false;
-                    Console.WriteLine($"Решение(значение X) линейного уравнения стандартного вида, где A * X + B = C: {SolveLinearEquation(number_a, number_b, number_c)}");
+                    Console.WriteLine($"Решение(значение X) линейного уравнения стандартного вида, где A * X + B = C: {SolveLinearEquation(numberA, numberB, numberC)}");
                 }
             } while (flag == true);
            
@@ -75,7 +75,7 @@ namespace Homework_1
             else
             {
                 double[] resultArray = new double[2];
-                resultArray = ReductionToLinearEquation(x1, y1, x2, y2);
+                resultArray = GetLinearEquation(x1, y1, x2, y2);
                 Console.WriteLine($"Уравнение прямой проходящей через эти точки: Y = {resultArray[0]}X + {resultArray[1]}");
             }
 
@@ -101,35 +101,35 @@ namespace Homework_1
             str2 = buffer;
         }
 
-        public void Swap(ref int number_1, ref int number_2)
+        public void Swap(ref int numberA, ref int numberB)
         {
-            int buffer = number_1;
-            number_1 = number_2;
-            number_2 = buffer;
+            int buffer = numberA;
+            numberA = numberB;
+            numberA = buffer;
         }
 
 
-        public int Divide(int number_1, int number_2)
+        public int Divide(int numberA, int numberB)
         {
-            int result = number_1 / number_2;
+            int result = numberA / numberB;
             return result;
         }
-        public int FindRemainder(int number_1, int number_2)
+        public int FindRemainder(int numberA, int numberB)
         {
-            int result = number_1 % number_2;
+            int result = numberA % numberB;
             return result;
         }
-        public double SolveLinearEquation(double number_a, double number_b, double number_c)
+        public double SolveLinearEquation(double numberA, double numberB, double numberC)
         {
-            if (number_a == 0)
+            if (numberA == 0)
             {
                 throw new ArgumentException("Происходит деление на нуль");
             }
-            double x = (number_c - number_b) / number_a;
+            double x = (numberC - numberB) / numberA;
             return x;
         }
 
-        public double[] ReductionToLinearEquation(double x1, double y1, double x2, double y2)
+        public double[] GetLinearEquation(double x1, double y1, double x2, double y2)
         {
             double k = (y2 - y1) / (x2 - x1);
             double b = k * x1 - y1;

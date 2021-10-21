@@ -45,9 +45,9 @@ namespace Homework_3
         public void SolveTask_3_5()
         {
             Helpers helpers = new Helpers();
-            int A = helpers.GetIntNumberFromUser("Введите число A: ");
-            int B = helpers.GetIntNumberFromUser("Введите число B: ");
-            Console.WriteLine($"Cумма всех чисел из диапазона от A до B, которые делятся без остатка на 7: {SumAllNumbersInRangeThatDivBySeven(A, B)}");
+            int a = helpers.GetIntNumberFromUser("Введите число A: ");
+            int b = helpers.GetIntNumberFromUser("Введите число B: ");
+            Console.WriteLine($"Cумма всех чисел из диапазона от A до B, которые делятся без остатка на 7: {SumAllNumbersInRangeThatDivBySeven(a, b)}");
         }
 
         public void SolveTask_3_6()
@@ -59,9 +59,9 @@ namespace Homework_3
         public void SolveTask_3_7()
         {
             Helpers helpers = new Helpers();
-            int A = helpers.GetIntNumberFromUser("Введите первое число: "); 
-            int B = helpers.GetIntNumberFromUser("Введите второе число: ");
-            Console.WriteLine($"Их наибольший общий делитель {Math.Abs(CalculateGreatestCommonFactor(A, B))}");
+            int a = helpers.GetIntNumberFromUser("Введите первое число: "); 
+            int b = helpers.GetIntNumberFromUser("Введите второе число: ");
+            Console.WriteLine($"Их наибольший общий делитель {Math.Abs(CalculateGreatestCommonFactor(a, b))}");
         }
 
         public void SolveTask_3_8()
