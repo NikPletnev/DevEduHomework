@@ -105,7 +105,7 @@ namespace Homework_1
         {
             int buffer = numberA;
             numberA = numberB;
-            numberA = buffer;
+            numberB = buffer;
         }
 
 

@@ -71,7 +71,7 @@ namespace Homework_4
             int[] array = new int[arrayLenght];
             helpers.RandomizeArray(array);
             helpers.ShowArray(array);
-            ReverseAnArrayy(array);
+            GetReversedArrayy(array);
             Console.WriteLine("\nРеверс массива: ");
             helpers.ShowArray(array);
 
@@ -152,7 +152,7 @@ namespace Homework_4
                 {
                     if (array[index] > array[indexSup])
                     {
-                        hw_1.Swap(ref array[index], ref array[index + 1]);
+                        hw_1.Swap(ref array[index], ref array[indexSup]);
                     }
                 }
             }
@@ -165,6 +165,7 @@ namespace Homework_4
             {
                 
                 hw_1.Swap(ref array[index], ref array[array.Length / 2 + index + array.Length % 2]);
+
             }
         }
 
@@ -192,7 +193,7 @@ namespace Homework_4
         public int SumOddElements(int[] array)
         {
             int sumOdd = 0;
-            for (int index = 0; index < array.Length; index+=2)
+            for (int index = 1; index < array.Length; index+=2)
             {
               
                 sumOdd += array[index];
