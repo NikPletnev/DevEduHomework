@@ -2,20 +2,22 @@ using NUnit.Framework;
 using System;
 using Homework_3;
 
-
 namespace Homework_3.Tests
 {
     public class HW3_Tests
     {
         private HW_3 _hw3;
+        
+
         [SetUp]
         public void Setup()
         {
             _hw3 = new HW_3();
+
         }
 
 
-        public int[] getArrayForSearchNumbersSumEvenIsGreaterSumOfOdd(int key)
+        public int[] GetArrayForSearchNumbersSumEvenIsGreaterSumOfOdd(int key)
         {
 
             switch (key)
@@ -30,7 +32,7 @@ namespace Homework_3.Tests
                     break;
             }
         }
-        public int[] getArrayForFindAllNumbersThatAreDivisibleByANumber(int key)
+        public int[] GetArrayForFindAllNumbersThatAreDivisibleByANumber(int key)
         {
 
             switch (key)
@@ -49,6 +51,9 @@ namespace Homework_3.Tests
 
         [TestCase(123, 387, true)]
         [TestCase(123, 456, false)]
+        [TestCase(104, 0, true)]
+        [TestCase(0, 104, true)]
+        [TestCase(0, 0, true)]
 
         public void CheckSameDigitsTest(int a, int b, bool expected)
         {
@@ -69,7 +74,7 @@ namespace Homework_3.Tests
             //arrange
 
             //act
-            int[] expected = getArrayForSearchNumbersSumEvenIsGreaterSumOfOdd(key);
+            int[] expected = GetArrayForSearchNumbersSumEvenIsGreaterSumOfOdd(key);
             int[] actual = _hw3.SearchNumbersSumEvenIsGreaterSumOfOdd(number);
             //assert
 
@@ -79,6 +84,8 @@ namespace Homework_3.Tests
 
         [TestCase(228, 822)]
         [TestCase(1337, 7331)]
+        [TestCase(5500, 55)]
+
 
         public void ReverseNumberTest(int number, int expected)
         {
@@ -132,6 +139,21 @@ namespace Homework_3.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase(0, 1, "Attempted to divide by zero.")]
+        [TestCase(1, 0, "Attempted to divide by zero.")]
+        public void CalculateGreatestCommonFactorrNegativeTest(int a, int b, string expectedString)
+        {
+            //arrange
+
+
+            //act, assert
+            
+            
+            Exception ex = Assert.Throws(typeof(DivideByZeroException), () => _hw3.CalculateGreatestCommonFactor(a, b));
+            Assert.AreEqual(expectedString, ex.Message);
+        }
+
+
         [TestCase(5, 3)]
         [TestCase(10, 34)]
 
@@ -147,6 +169,21 @@ namespace Homework_3.Tests
             Assert.AreEqual(expected, actual);
 
         }
+
+        [TestCase(0, "Числа Фибоначчи начинаются с 1!")]
+        [TestCase(-1, "Числа Фибоначчи начинаются с 1!")]
+        public void SearchFibbonachiNumberNegativeTest(int number, string expectedMessage)
+        {
+            //arrange
+
+
+            //act, assert
+
+            Exception ex = Assert.Throws(typeof(ArgumentException), () => _hw3.SearchFibbonachiNumber(number));
+            Assert.AreEqual(expectedMessage, ex.Message);
+        }
+
+
 
         [TestCase(1, 15, 21)]
         [TestCase(8, 15, 14)]
@@ -180,6 +217,10 @@ namespace Homework_3.Tests
 
         [TestCase(2, 4, 16)]
         [TestCase(3, 3, 27)]
+        [TestCase(0, 3, 0)]
+        [TestCase(3, 0, 1)]
+
+
         public void PowerNumberTest(double a, double b, double expected)
         {
             //arrange
@@ -198,7 +239,7 @@ namespace Homework_3.Tests
             //arrange
 
             //act
-            int[] expected = getArrayForFindAllNumbersThatAreDivisibleByANumber(key);
+            int[] expected = GetArrayForFindAllNumbersThatAreDivisibleByANumber(key);
             int[] actual = _hw3.FindAllNumbersThatAreDivisibleByANumber(number);
             //assert
 

@@ -65,21 +65,20 @@ namespace Homework_1
             double y1 = helpers.GetDoubleNumberFromUser("Y1: ");
             double x2 = helpers.GetDoubleNumberFromUser("X2: ");
             double y2 = helpers.GetDoubleNumberFromUser("Y2: ");
-            if (x1 == x2)
+            double[] resultArray = new double[2];
+            resultArray = GetLinearEquation(x1, y1, x2, y2);
+            if(resultArray[0] == 0 && resultArray[1] == x1)
             {
                 Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {x1}");
-            }else if (y1 == y2)
+            }
+            else if (resultArray[0] == 0 && resultArray[1] == y1)
             {
-                Console.WriteLine($"Уравнение прямой проходящей через эти точки: X = {x1}");
+                Console.WriteLine($"Уравнение прямой проходящей через эти точки: Y = {y1}");
             }
             else
             {
-                double[] resultArray = new double[2];
-                resultArray = GetLinearEquation(x1, y1, x2, y2);
                 Console.WriteLine($"Уравнение прямой проходящей через эти точки: Y = {resultArray[0]}X + {resultArray[1]}");
-            }
-
-           
+            }  
             
         }
 
@@ -131,12 +130,29 @@ namespace Homework_1
 
         public double[] GetLinearEquation(double x1, double y1, double x2, double y2)
         {
-            double k = (y2 - y1) / (x2 - x1);
-            double b = k * x1 - y1;
             double[] resultArray = new double[2];
-            resultArray[0] = k;
-            resultArray[1] = b;
-            return resultArray;
+            if (x1 == x2)
+            {
+                resultArray[0] = 0;
+                resultArray[1] = x1;
+                return resultArray;
+            }
+            else if (y1 == y2)
+            {
+                resultArray[0] = 0;
+                resultArray[1] = y1;
+                return resultArray;
+            }
+            else
+            {
+                double k = (y2 - y1) / (x2 - x1);
+                double b = k * x1 - y1;
+                
+                resultArray[0] = k;
+                resultArray[1] = b;
+                return resultArray;
+            }
+           
         }
 
     }

@@ -14,7 +14,7 @@ namespace Homework_2.Tests
         }
 
 
-        private static double[] getArrayForQuadraticEquationTest(int key)
+        private double[] GetArrayForQuadraticEquationTest(int key)
         {
             double[] arrayForTest = new double[3]; 
             switch (key)
@@ -55,6 +55,9 @@ namespace Homework_2.Tests
         [TestCase(-1, 1, 2)]
         [TestCase(1, -1, 4)]
         [TestCase(-1, -1, 3)]
+        [TestCase(0, -1, 0)]
+        [TestCase(-1, 0, 0)]
+
         public void FindTheCoordinateQuarterTest(double x, double y, double expected)
         {
             //arrange
@@ -67,6 +70,28 @@ namespace Homework_2.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase(1, 1, 1, "Точка с координатами 1,1 пренаделжит первой четверти")]
+        [TestCase(-1, 1, 2, "Точка с координатами -1,1 пренаделжит второй четверти")]
+        [TestCase(1, -1, 4, "Точка с координатами 1,-1 пренаделжит четвертой четверти")]
+        [TestCase(-1, -1, 3, "Точка с координатами -1,-1 пренаделжит третьей четверти")]
+        [TestCase(0, -1, 0, "Точка находится в центре координатой оси или на координатной оси")]
+        [TestCase(-1, 0, 0, "Точка находится в центре координатой оси или на координатной оси")]
+
+        public void WriteCoordinateQuarterTest(double x, double y, double quarterNumber, string expected)
+        {
+            //arrange
+
+            //act
+
+            string actual = _hw2.WriteCoordinateQuarter(quarterNumber, x , y);
+
+            //assert
+
+            Assert.AreEqual(expected, actual);
+
+        }
+
 
         [TestCase(1.0, 2.0, 3.0, 1.0, 2.0, 3.0)]
         [TestCase(3.0, 2.0, 1.0, 1.0, 2.0, 3.0)]
@@ -95,7 +120,7 @@ namespace Homework_2.Tests
             //arrange
 
             //act
-            double[] expected = getArrayForQuadraticEquationTest(key);
+            double[] expected = GetArrayForQuadraticEquationTest(key);
             double[] actual = _hw2.SolveQuadraticEquation(a, b, c);
             //assert
 

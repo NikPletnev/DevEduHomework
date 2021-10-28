@@ -14,6 +14,8 @@ namespace Homework_1.Tests
         }
 
         [TestCase(3, 4, -31)]
+        [TestCase(5, 9, -26.5)]
+
         public void CalculateResultTest(double numberA, double numberB, double expected)
         {
             //arrange
@@ -121,6 +123,10 @@ namespace Homework_1.Tests
         }
 
         [TestCase(2, 5, 3, 6, 1, -3)]
+        [TestCase(1, 3, 1, 6, 0, 1)]
+        [TestCase(1, 2, 3, 2, 0, 2)]
+
+
         public void ReductionToLinearEquationTest(double x1, double y1, double x2, double y2, double expectedK, double expectedB)
         {
 

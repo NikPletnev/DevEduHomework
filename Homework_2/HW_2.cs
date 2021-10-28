@@ -20,7 +20,8 @@ namespace Homework_2
             Helpers helpers = new Helpers();
             double x = helpers.GetDoubleNumberFromUser("Введите X: ");
             double y = helpers.GetDoubleNumberFromUser("Введите Y: ");
-            WriteCoordinateQuarter(FindTheCoordinateQuarter(x,y), x, y);
+            string resultString = WriteCoordinateQuarter(FindTheCoordinateQuarter(x,y), x, y);
+            Console.WriteLine(resultString);
 
         }
 
@@ -172,27 +173,29 @@ namespace Homework_2
             return coordinateQuarter;
         }
 
-        public void WriteCoordinateQuarter(double quarterNumber, double x, double y)
+        public string WriteCoordinateQuarter(double quarterNumber, double x, double y)
         {
+            string returnString;
             switch (quarterNumber)
             {
                 case 1:
-                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит первой четверти");
+                    returnString = $"Точка с координатами {x},{y} пренаделжит первой четверти";
                     break;
                 case 2:
-                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит второй четверти");
+                    returnString = $"Точка с координатами {x},{y} пренаделжит второй четверти";
                     break;
                 case 3:
-                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит третьей четверти");
+                    returnString = $"Точка с координатами {x},{y} пренаделжит третьей четверти";
                     break;
                 case 4:
-                    Console.WriteLine($"Точка с координатами {x},{y} пренаделжит четвертой четверти");
+                    returnString = $"Точка с координатами {x},{y} пренаделжит четвертой четверти";
                     break;
 
                 default:
-                    Console.WriteLine("Точка находится в центре координатой оси или на координатной оси");
+                    returnString = "Точка находится в центре координатой оси или на координатной оси";
                     break;
             }
+            return returnString;
         }
 
 

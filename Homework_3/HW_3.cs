@@ -286,7 +286,10 @@ namespace Homework_3
             int fibbonachiNumber = 0;
             int fibbonachiNumber_1 = 0;
             int fibbonachiNumber_2 = 1;
-
+            if(number < 1)
+            {
+                throw new ArgumentException("Числа Фибоначчи начинаются с 1!");
+            }
             for (int count = 2; count <= number; count++)
             {
                 fibbonachiNumber = fibbonachiNumber_1 + fibbonachiNumber_2;
