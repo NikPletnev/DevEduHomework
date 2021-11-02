@@ -204,58 +204,86 @@ namespace Homework_4
 
         public int GetIndexOfMin(int [] array)
         {
-            int minIndex = 0;
-            int min = array[0];
-            for (int index = 0; index < array.Length; index++)
+            int minIndex = -1;
+            if (array.Length > 0)
             {
-                if (array[index] < min)
+                int min = array[0];
+                minIndex = 0;
+                for (int index = 0; index < array.Length; index++)
                 {
-                    min = array[index];
-                    minIndex = index;
+                    if (array[index] < min)
+                    {
+                        min = array[index];
+                        minIndex = index;
+                    }
                 }
             }
+            
             return minIndex;
         }
 
         public int GetIndexOfMax(int[] array)
         {
-            int maxIndex = 0;
-            int max = array[0];
-            for (int index = 0; index < array.Length; index++)
+            int maxIndex = -1;
+            if (array.Length > 0)
             {
-                if (array[index] > max)
+                int max = array[0];
+                maxIndex = 0;
+                for (int index = 0; index < array.Length; index++)
                 {
-                    max = array[index];
-                    maxIndex = index;
+                    if (array[index] > max)
+                    {
+                        max = array[index];
+                        maxIndex = index;
+                    }
                 }
             }
+            
             return maxIndex;
         }
 
 
         public int GetMax(int[] array)
         {
-            int max = array[0];
-            for (int index = 0; index < array.Length; index++)
+            int max;
+            if (array.Length > 0)
             {
-                if (array[index] > max)
+                max = array[0];
+                for (int index = 0; index < array.Length; index++)
                 {
-                    max = array[index];
+                    if (array[index] > max)
+                    {
+                        max = array[index];
+                    }
                 }
             }
+            else
+            {
+                throw new Exception("Array has no elements");
+            }
+           
             return max;
         }
 
         public int GetMin(int[] array)
         {
-            int min = array[0];
-            for (int index = 0; index < array.Length; index++)
+            int min;
+            if (array.Length > 0)
             {
-                if (array[index] < min)
+                min = array[0];
+                for (int index = 0; index < array.Length; index++)
                 {
-                    min = array[index];
+                    if (array[index] < min)
+                    {
+                        min = array[index];
+                    }
                 }
             }
+            else
+            {
+                throw new Exception("Array has no elements");
+            }
+            
             return min;
         }
     }

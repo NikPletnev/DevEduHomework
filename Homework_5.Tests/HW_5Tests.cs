@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using Homework_5;
-
+using System;
 
 namespace Homework_5.Tests
 {
@@ -26,6 +26,8 @@ namespace Homework_5.Tests
                 { { -3, 1, 32 },
                   {19, 22, 4 }, 
                   {11, 85, 63 } },
+                3 => new int[,]
+                {{-3}},
                 _ => new int[,] { },
             };
             return array;
@@ -43,6 +45,8 @@ namespace Homework_5.Tests
                 { {-3, 19, 11 },
                   {1, 22, 85 },
                   {32, 4, 63 } },
+                3 => new int[,]
+               {{-3}},
                 _ => new int[,] { },
             };
             return array;
@@ -51,6 +55,8 @@ namespace Homework_5.Tests
 
         [TestCase(1, 1)]
         [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
 
         public void FlipDiagonallyTest(int GetTestArrayKey, int GetExpectedArrayForFlipDiagonallyTestKey)
         {
@@ -68,6 +74,10 @@ namespace Homework_5.Tests
 
         [TestCase(1, 2)]
         [TestCase(2, 2)]
+        [TestCase(3, 1)]
+        [TestCase(4, 0)]
+
+
         public void NumberOfElementsThatMoreThanNeighborsTest(int GetTestArrayKey, int expected)
         {
             //arrange
@@ -84,6 +94,8 @@ namespace Homework_5.Tests
 
         [TestCase(1, 0, 2)]
         [TestCase(2, 0, 0)]
+        [TestCase(3, 0, 0)]
+
 
         public void GetIndexMinElementTest(int GetTestArrayKey, int expectedRow, int expectedColumn)
         {
@@ -101,8 +113,22 @@ namespace Homework_5.Tests
         }
 
 
+        [TestCase(4, "Array has no elements")]
+
+        public void GetIndexMinElementNegativeTest(int GetTestArrayKey, string expected)
+        {
+            int[,] actualArray = GetTestArray(GetTestArrayKey);
+
+            Exception ex = Assert.Throws(typeof(Exception), () => _hw5.GetIndexMinElement(actualArray));
+
+            Assert.AreEqual(expected, ex.Message);
+        }
+
+
         [TestCase(1, 1, 2)]
         [TestCase(2, 2, 1)]
+        [TestCase(3, 0, 0)]
+
 
         public void GetIndexMaxElementTest(int GetTestArrayKey, int expectedRow, int expectedColumn)
         {
@@ -119,8 +145,22 @@ namespace Homework_5.Tests
 
         }
 
+        [TestCase(4, "Array has no elements")]
+
+        public void GetIndexMaxElementNegativeTest(int GetTestArrayKey, string expected)
+        {
+            int[,] actualArray = GetTestArray(GetTestArrayKey);
+
+            Exception ex = Assert.Throws(typeof(Exception), () => _hw5.GetIndexMaxElement(actualArray));
+
+            Assert.AreEqual(expected, ex.Message);
+        }
+
         [TestCase(1, 1)]
         [TestCase(2, -3)]
+        [TestCase(3, -3)]
+
+
         public void SerachMinInArrayTest(int GetTestArrayKey, int expected)
         {
             //arrange
@@ -135,8 +175,22 @@ namespace Homework_5.Tests
            
         }
 
+        [TestCase(4, "Array has no elements")]
+
+        public void SerachMinInArrayNegativeTest(int GetTestArrayKey, string expected)
+        {
+            int[,] actualArray = GetTestArray(GetTestArrayKey);
+
+            Exception ex = Assert.Throws(typeof(Exception), () => _hw5.SerachMinInArray(actualArray));
+
+            Assert.AreEqual(expected, ex.Message);
+        }
+
+
         [TestCase(1, 15)]
         [TestCase(2, 85)]
+        [TestCase(3, -3)]
+
         public void SerachMaxInArrayTest(int GetTestArrayKey, int expected)
         {
             //arrange
@@ -149,6 +203,17 @@ namespace Homework_5.Tests
             //assert
             Assert.AreEqual(expected, actual);
 
+        }
+
+        [TestCase(4, "Array has no elements")]
+
+        public void SerachMaxInArrayNegativeTest(int GetTestArrayKey, string expected)
+        {
+            int[,] actualArray = GetTestArray(GetTestArrayKey);
+
+            Exception ex = Assert.Throws(typeof(Exception), () => _hw5.SerachMaxInArray(actualArray));
+
+            Assert.AreEqual(expected, ex.Message);
         }
 
 

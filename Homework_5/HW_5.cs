@@ -120,6 +120,10 @@ namespace Homework_5
 
         public int[] GetIndexMinElement(int[,] array)
         {
+            if (array.Length < 1)
+            {
+                throw new Exception("Array has no elements");
+            }
             int min = 0;
             int[] minIndex = new int[2];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -148,6 +152,10 @@ namespace Homework_5
 
         public int[] GetIndexMaxElement(int[,] array)
         {
+            if (array.Length < 1)
+            {
+                throw new Exception("Array has no elements");
+            }
             int max = 0;
             int[] maxIndex = new int[2];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -177,6 +185,10 @@ namespace Homework_5
 
         public int SerachMinInArray(int[,] array)
         {
+            if (array.Length < 1)
+            {
+                throw new Exception("Array has no elements");
+            }
             int min = 0;
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -197,6 +209,10 @@ namespace Homework_5
         }
         public int SerachMaxInArray(int[,] array)
         {
+            if (array.Length < 1)
+            {
+                throw new Exception("Array has no elements");
+            }
             int max = 0;
             for (int i = 0; i < array.GetLength(0); i++)
             {
